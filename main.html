@@ -15,44 +15,11 @@
 
 		<label for="checkbox">Remember me</label>
 		<input type="checkbox" id="checkbox" name="checkbox">
-
 		<input type="submit" id="submit" value="Submit" onclick="submitForm()">
+		<button type="submit" id="existing" value="Submit">Login as existing user</button>
+
 	</form>
-	<script>
-		window.onload = function() {
-			// check if there are saved details
-			if(localStorage.getItem('username') && localStorage.getItem('password')) {
-				// show button to login as existing user
-				var btn = document.createElement('button');
-				btn.setAttribute('id', 'existing');
-				btn.innerHTML = 'Login as existing user';
-				btn.onclick = function() {
-					alert('Logged in as ' + localStorage.getItem('username'));
-				};
-				document.getElementById('form').appendChild(btn);
-			}
-		};
-
-		function submitForm() {
-			// get form data
-			var username = document.getElementById('username').value;
-			var password = document.getElementById('password').value;
-			var remember = document.getElementById('checkbox').checked;
-
-			// save details to localstorage if checkbox is checked
-			if(remember) {
-				localStorage.setItem('username', username);
-				localStorage.setItem('password', password);
-			} else {
-				// remove saved details from localstorage if checkbox is unchecked
-				localStorage.removeItem('username');
-				localStorage.removeItem('password');
-			}
-
-			// show alert with username
-			alert('Logged in as ' + username);
-		}
-	</script>
+<script src="script.js"></script>
 </body>
 </html>
 
